@@ -22,10 +22,11 @@ import importlib
 # The MasterDataManager will recognize that the MasterData of some UFO's does not exist, and it will create
 # them accordingly. Don't add comments, since the will be written again for every UFO that is added later
 # (which will then remove your comments).
-try:
-    from myMasterData import MASTERS_DATA
-except ImportError:
-    MASTER_DATA = {}
+
+#try:
+from myMasterData import MASTERS_DATA
+#except ImportError:
+#    MY_MASTERS_DATA = {}
 
 # Add paths to libs in sibling repositories. The assistantLib module contains generic code for Asistanta.s
 PATHS = ['../TYPETR-TypeLab-Club-Assistants/'] # Relative path to this respository that holds AssistantLib
@@ -87,50 +88,6 @@ class TLCDemoAssistant( # Eacht masters has its own, responding to a varaiety of
         Assistant, # Inheriting from Subscriber
         AssistantModuleOverlay, # Inheriting from WindowController. Adds library module functions as inherited class.
 	):
-    UFO_PATH = 'ufo/' # This is the relative path of the directory that contains all UFO masters
-    PROJECT_PATH = THIS_PROJECT_PATH # Set the absolute path of this project (different for every user)
-    
-	# Always define the UFO file names as variables. This way accidental tupos are deteted by the Python compiler
-	# and UFO file names can be change during the deisgn process, e.g. pointing to other versions
-	# This way there is no need to find/replace names in the entire source.
-    UPGRADE_TRY_LIGHT      = 'Upgrade_Try-Light.ufo'    UPGRADE_TRY_REGULAR    = 'Upgrade_Try-Regular.ufo'
-    UPGRADE_TRY_BOLD       = 'Upgrade_Try-Bold.ufo'
-    # Used by familyOverview, defining the order of masters in the top family line that shows in the EditorWindow
-    UFO_PATHS = [ # Define the order of display in FamilyOverview
-        UFO_PATH + UPGRADE_TRY_LIGHT,
-        UFO_PATH + UPGRADE_TRY_REGULAR,
-        UFO_PATH + UPGRADE_TRY_BOLD,
-    ]
-    # Define the glyphSet for this selection of masters.
-    # See https://github.com/koeberlin/Latin-Character-Sets
-    # There is also LatinM_GlyphSet and LatinL_GlyphSet
-    # Custom glyphsets can be added localled and then imported/created as GLYPH_SET    GLYPH_SET = GlyphSet(LATIN_S_SET_NAME) # Make a Small Latin1 glyphset object.  
-
-    # Generate the MasterDataManager instance. This will test if the local masterData.py exists.
-    # Otherwise it will be generated as default source.
-    MDM = MASTER_DATA_MANAGER = MasterDataManager(MASTERS_DATA, ufoPaths=UFO_PATHS, glyphSet=GLYPH_SET)
-    MDM.save()
-    
-    # The default MASTER_DATA_MANAGER behaves as a dictionary of MasterData instances, derived from the
-    # local masterData.py file, as anwered (or generated) by the MasterDataManager look similar to the following: 
-    #MASTER_DATA = { # This will contain all meta information about the masters as MasterData instances.
-    #    UPGRADE_TRY_LIGHT: MD(
-    #        name=UPGRADE_TRY_LIGHT, 
-    #        glyphSet=GS,
-    #        m0=UFO_PATH + UPGRADE_TRY_REGULAR,
-    #    ),
-    #    UPGRADE_TRY_REGULAR: MD(
-    #        name=UPGRADE_TRY_LIGHT, 
-    #        glyphSet=GS,
-    #        m0=UFO_PATH + UPGRADE_TRY_REGULAR,
-    #    ),      
-    #    UPGRADE_TRY_BOLD: MD(
-    #        name=UPGRADE_TRY_LIGHT, 
-    #        glyphSet=GS,
-    #        m0=UFO_PATH + UPGRADE_TRY_BOLD,
-    #    ),
-    #} 
-
     # These get called on opening the Installer window, defining the elements that draw in the EditorWindow
     INIT_MERZ_METHODS = [ 
         'initMerzOverlay',
@@ -157,6 +114,51 @@ class TLCDemoAssistantController( # Single Assistant window that creates/communi
 
     PROJECT_PATH = THIS_PROJECT_PATH # Let the AssistantContoller know where this proj4ct file is.
     ADD_GLOBAL_BUTTONS = False # For now, keep it simple, supressing the BaseAssistant show the buttons at the bottom
+
+    UFO_PATH = 'ufo/' # This is the relative path of the directory that contains all UFO masters
+    PROJECT_PATH = THIS_PROJECT_PATH # Set the absolute path of this project (different for every user)
+    
+	# Always define the UFO file names as variables. This way accidental tupos are deteted by the Python compiler
+	# and UFO file names can be change during the deisgn process, e.g. pointing to other versions
+	# This way there is no need to find/replace names in the entire source.
+    UPGRADE_TRY_LIGHT      = 'Upgrade_Try-Light.ufo'    UPGRADE_TRY_REGULAR    = 'Upgrade_Try-Regular.ufo'
+    UPGRADE_TRY_BOLD       = 'Upgrade_Try-Bold.ufo'
+    # Used by familyOverview, defining the order of masters in the top family line that shows in the EditorWindow
+    UFO_PATHS = [ # Define the order of display in FamilyOverview
+        UFO_PATH + UPGRADE_TRY_LIGHT,
+        UFO_PATH + UPGRADE_TRY_REGULAR,
+        UFO_PATH + UPGRADE_TRY_BOLD,
+    ]
+    # Define the glyphSet for this selection of masters.
+    # See https://github.com/koeberlin/Latin-Character-Sets
+    # There is also LatinM_GlyphSet and LatinL_GlyphSet
+    # Custom glyphsets can be added localled and then imported/created as GLYPH_SET    GLYPH_SET = GlyphSet(LATIN_S_SET_NAME) # Make a Small Latin1 glyphset object.  
+
+    # Generate the MasterDataManager instance. This will test if the local masterData.py exists.
+    # Otherwise it will be generated as default source.
+    MDM = MASTER_DATA_MANAGER = MasterDataManager(MASTERS_DATA, PROJECT_PATH, glyphSet=GLYPH_SET)
+    MDM.save()
+    
+    print(MDM.mastersData)
+    # The default MASTER_DATA_MANAGER behaves as a dictionary of MasterData instances, derived from the
+    # local masterData.py file, as anwered (or generated) by the MasterDataManager look similar to the following: 
+    #MASTER_DATA = { # This will contain all meta information about the masters as MasterData instances.
+    #    UPGRADE_TRY_LIGHT: MD(
+    #        name=UPGRADE_TRY_LIGHT, 
+    #        glyphSet=GS,
+    #        m0=UFO_PATH + UPGRADE_TRY_REGULAR,
+    #    ),
+    #    UPGRADE_TRY_REGULAR: MD(
+    #        name=UPGRADE_TRY_LIGHT, 
+    #        glyphSet=GS,
+    #        m0=UFO_PATH + UPGRADE_TRY_REGULAR,
+    #    ),      
+    #    UPGRADE_TRY_BOLD: MD(
+    #        name=UPGRADE_TRY_LIGHT, 
+    #        glyphSet=GS,
+    #        m0=UFO_PATH + UPGRADE_TRY_BOLD,
+    #    ),
+    #} 
 
     BUILD_UI_METHODS = [
         'buildOverlay',
