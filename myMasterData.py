@@ -7,6 +7,8 @@
 #
 from assistantLib.assistantModules.data import MasterData as MD
 
+OVERSHOOT = 12
+
 MASTERS_DATA = {
     'Upgrade_Try-Bold': MD(
         name='Upgrade_Try-Bold',
@@ -30,9 +32,9 @@ MASTERS_DATA = {
         supsHeight=333,
         descender=-250,
         baseline=0,
-        baseOvershoot=12,
+        baseOvershoot=OVERSHOOT,
         stemOvershoot=0,
-        capOvershoot=12,
+        capOvershoot=OVERSHOOT,
         scOvershoot=12,
         supsOvershoot=9,
         # 
@@ -125,9 +127,9 @@ MASTERS_DATA = {
         supsHeight=333,
         descender=-250,
         baseline=0,
-        baseOvershoot=12,
+        baseOvershoot=OVERSHOOT,
         stemOvershoot=0,
-        capOvershoot=12,
+        capOvershoot=OVERSHOOT,
         scOvershoot=12,
         supsOvershoot=9,
         # 
