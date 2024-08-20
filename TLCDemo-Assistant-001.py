@@ -23,10 +23,9 @@ import importlib
 # them accordingly. Don't add comments, since the will be written again for every UFO that is added later
 # (which will then remove your comments).
 
-#try:
+import myMasterData
+importlib.reload(myMasterData)
 from myMasterData import MASTERS_DATA
-#except ImportError:
-#    MY_MASTERS_DATA = {}
 
 # Add paths to libs in sibling repositories. The assistantLib module contains generic code for Asistanta.s
 PATHS = ['../TYPETR-TypeLab-Club-Assistants/'] # Relative path to this respository that holds AssistantLib
@@ -72,6 +71,8 @@ from assistantLib.assistantModules.overlay import AssistantModuleOverlay
 # as accurate a possible based on guessing from the existing UFO masters in the ufo/ folder.
 # MasterData instances will hold specific additional data for each master, that cannot be retrieved
 # from the standard font.info
+import assistantLib.assistantModules.data
+importlib.reload(assistantLib.assistantModules.data)
 from assistantLib.assistantModules.data import MasterDataManager
 
 # For this demo we use a small Latin set. For real project, there's a choice from multiple standardized glyphsets.
@@ -124,10 +125,10 @@ class TLCDemoAssistantController( # Single Assistant window that creates/communi
     UPGRADE_TRY_LIGHT      = 'Upgrade_Try-Light.ufo'    UPGRADE_TRY_REGULAR    = 'Upgrade_Try-Regular.ufo'
     UPGRADE_TRY_BOLD       = 'Upgrade_Try-Bold.ufo'
     # Used by familyOverview, defining the order of masters in the top family line that shows in the EditorWindow
-    UFO_PATHS = [ # Define the order of display in FamilyOverview
-        UFO_PATH + UPGRADE_TRY_LIGHT,
-        UFO_PATH + UPGRADE_TRY_REGULAR,
-        UFO_PATH + UPGRADE_TRY_BOLD,
+    UFO_NAMES = [ # Define the order of display in FamilyOverview
+        UPGRADE_TRY_LIGHT,
+        UPGRADE_TRY_REGULAR,
+        UPGRADE_TRY_BOLD,
     ]
     # Define the glyphSet for this selection of masters.
     # See https://github.com/koeberlin/Latin-Character-Sets
@@ -136,10 +137,9 @@ class TLCDemoAssistantController( # Single Assistant window that creates/communi
 
     # Generate the MasterDataManager instance. This will test if the local masterData.py exists.
     # Otherwise it will be generated as default source.
-    MDM = MASTER_DATA_MANAGER = MasterDataManager(MASTERS_DATA, PROJECT_PATH, glyphSet=GLYPH_SET)
+    MDM = MASTER_DATA_MANAGER = MasterDataManager(MASTERS_DATA, PROJECT_PATH, ufoNames=UFO_NAMES, glyphSet=GLYPH_SET)
     MDM.save()
     
-    print(MDM.mastersData)
     # The default MASTER_DATA_MANAGER behaves as a dictionary of MasterData instances, derived from the
     # local masterData.py file, as anwered (or generated) by the MasterDataManager look similar to the following: 
     #MASTER_DATA = { # This will contain all meta information about the masters as MasterData instances.
