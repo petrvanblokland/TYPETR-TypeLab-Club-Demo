@@ -11,56 +11,287 @@ MASTERS_DATA = {
     'Upgrade_Try-Bold': MD(
         name='Upgrade_Try-Bold',
         ufoPath='ufo/Upgrade_Try-Bold.ufo',
-        #	Angles
+        # GlyphSet instance, describing the glyph set and GlyphData characteristics. 
+        # This attribute must be defined, or else the Latin_S_set (Small) will be used.
+        glyphSetName='LatinS',
+        # 
+        #    Angles & italics
+        # 
         italicAngle=0,
-        #	Vertical metrics
+        italicSkew=0.0,
+        italicRotation=0.0,
+        # 
+        #    Vertical metrics
+        # 
         ascender=750,
         capHeight=750,
         xHeight=500,
+        scHeight=500,
+        supsHeight=333,
         descender=-250,
+        baseline=0,
         baseOvershoot=12,
+        stemOvershoot=0,
         capOvershoot=12,
         scOvershoot=12,
         supsOvershoot=9,
-        #	Info
+        # 
+        #    Anchors
+        # 
+        ascenderAnchorOffsetY=-120,
+        boxTopAnchorOffsetY=-120,
+        capHeightAnchorOffsetY=-78, # Optional vertical offset of cap-anhors or lower capital diacritics.
+        xHeightAnchorOffsetY=-16,
+        baselineAnchorOffsetY=16,
+        ogonekAnchorOffsetY=16,
+        boxBottomAnchorOffsetY=64,
+        descenderAnchorOffsetY=64,
+        # 
+        #    Info
+        # 
         copyright='',
-	),
+        # 
+        #    MasterData parameters to be added for automatic generation
+        # 
+        # srcUFOPath=None
+        # someUFOPath=None
+        # orgUFOPath=None
+        # groupSrcUFOPath=None
+        # 
+        # Optional copy groups from here, otherwise use orgUFOPath
+        # 
+        # kerningSrcUFOPath=None, # Optional copy kerning from here, otherwise use orgUFOPath
+        # romanItalicUFOPath=None, # Path of corresponding master for roman <--> italic
+        # spacingSrcUFOPath=None, # If defined, used as spacing reference, overwriting all spacing rules. Goes with spacingOffset
+        # spacingOffset=0, # Value to add to margins of self.spacingSrcUFOPath (if defined)
+        # dsPosition=None,
+        # m0=None, # Origin of the design space
+        # m1=None, m2=None, # Used for interpolating spacing, outlines, anchor positions, component positions
+        # sm1=None, sm2=None, # Scalerpolate masters for condensed and extended making
+        # osm1=None, osm2=None, # Previous and next master on the same optical size level
+        # tripletData1=None, tripletData2=None, featurePath=None, 
+        # 
+        #    Vertical metrics
+        # 
+        # numrBaseline=None, supsBaseline=None, sinfBaseline=None, dnomBaseline=None, modBaseline=None,
+        # middlexHeight=None, middleCapHeight=None,
+        # Vertical anchor offsets to avoid collission with baseline, guidlines, etc. in mouse selection
+        # baseDiacriticsTop=None, capDiacriticsTop=None, scDiacriticsTop=None, # Baseline of top diacritics
+        # baseDiacriticsBottom=None, # Top of bottom diacritis
+        #    Horizontal metrics
+        # 
+        # diagonalTolerance=0, # ± Tolerance for italic diagonals to be marked as off-limit
+        # HStem=None, HThin=None, OStem=None, OThin=None,
+        # HscStem=None, HscThin=None, OscStem=None, OscThin=None,
+        # nStem=None, oStem=None, oThin=None, UThin=None, VThin=None, eThin=None,
+        # thickness=10, distance=16, # Used for Neon tubes, can be overwritten from GlyphData.thickness
+        # tabWidth=None,
+        # 
+        #    Table stuff
+        # 
+        # ttfPath=None, platformID=None, platEncID=None, langID=None, 
+        # unitsPerEm=UNITS_PER_EM, copyright=COPYRIGHT, uniqueID=None, trademark=TRADEMARK, 
+        # lowestRecPPEM=LOWEST_PPEM,
+        # familyName=None, styleName=None,
+        # fullName=None, version=None, versionMajor=VERSION_MAJOR, versionMinor=VERSION_MINOR,
+        # postscriptName=None, preferredFamily=None, preferredSubFamily=None,
+        # openTypeOS2WinAscent=None, openTypeOS2WinDescent=None,
+        # openTypeOS2Type=[2, 8], # fsType, TN standard
+        # vendorURL=None, manufacturerURL=None, manufacturer=None,
+        # designerURL=None, designer=None, 
+        # eulaURL=None, eulaDescription=None,
+        # underlinePosition=None, underlineThickness=None
+    ),
 
     'Upgrade_Try-Light': MD(
         name='Upgrade_Try-Light',
         ufoPath='ufo/Upgrade_Try-Light.ufo',
-        #	Angles
+        # GlyphSet instance, describing the glyph set and GlyphData characteristics. 
+        # This attribute must be defined, or else the Latin_S_set (Small) will be used.
+        glyphSetName='LatinS',
+        # 
+        #    Angles & italics
+        # 
         italicAngle=0,
-        #	Vertical metrics
+        italicSkew=0.0,
+        italicRotation=0.0,
+        # 
+        #    Vertical metrics
+        # 
         ascender=750,
         capHeight=750,
         xHeight=500,
+        scHeight=500,
+        supsHeight=333,
         descender=-250,
+        baseline=0,
         baseOvershoot=12,
+        stemOvershoot=0,
         capOvershoot=12,
         scOvershoot=12,
         supsOvershoot=9,
-        #	Info
+        # 
+        #    Anchors
+        # 
+        ascenderAnchorOffsetY=-120,
+        boxTopAnchorOffsetY=-120,
+        capHeightAnchorOffsetY=-78, # Optional vertical offset of cap-anhors or lower capital diacritics.
+        xHeightAnchorOffsetY=-16,
+        baselineAnchorOffsetY=16,
+        ogonekAnchorOffsetY=16,
+        boxBottomAnchorOffsetY=64,
+        descenderAnchorOffsetY=64,
+        # 
+        #    Info
+        # 
         copyright='',
-	),
+        # 
+        #    MasterData parameters to be added for automatic generation
+        # 
+        # srcUFOPath=None
+        # someUFOPath=None
+        # orgUFOPath=None
+        # groupSrcUFOPath=None
+        # 
+        # Optional copy groups from here, otherwise use orgUFOPath
+        # 
+        # kerningSrcUFOPath=None, # Optional copy kerning from here, otherwise use orgUFOPath
+        # romanItalicUFOPath=None, # Path of corresponding master for roman <--> italic
+        # spacingSrcUFOPath=None, # If defined, used as spacing reference, overwriting all spacing rules. Goes with spacingOffset
+        # spacingOffset=0, # Value to add to margins of self.spacingSrcUFOPath (if defined)
+        # dsPosition=None,
+        # m0=None, # Origin of the design space
+        # m1=None, m2=None, # Used for interpolating spacing, outlines, anchor positions, component positions
+        # sm1=None, sm2=None, # Scalerpolate masters for condensed and extended making
+        # osm1=None, osm2=None, # Previous and next master on the same optical size level
+        # tripletData1=None, tripletData2=None, featurePath=None, 
+        # 
+        #    Vertical metrics
+        # 
+        # numrBaseline=None, supsBaseline=None, sinfBaseline=None, dnomBaseline=None, modBaseline=None,
+        # middlexHeight=None, middleCapHeight=None,
+        # Vertical anchor offsets to avoid collission with baseline, guidlines, etc. in mouse selection
+        # baseDiacriticsTop=None, capDiacriticsTop=None, scDiacriticsTop=None, # Baseline of top diacritics
+        # baseDiacriticsBottom=None, # Top of bottom diacritis
+        #    Horizontal metrics
+        # 
+        # diagonalTolerance=0, # ± Tolerance for italic diagonals to be marked as off-limit
+        # HStem=None, HThin=None, OStem=None, OThin=None,
+        # HscStem=None, HscThin=None, OscStem=None, OscThin=None,
+        # nStem=None, oStem=None, oThin=None, UThin=None, VThin=None, eThin=None,
+        # thickness=10, distance=16, # Used for Neon tubes, can be overwritten from GlyphData.thickness
+        # tabWidth=None,
+        # 
+        #    Table stuff
+        # 
+        # ttfPath=None, platformID=None, platEncID=None, langID=None, 
+        # unitsPerEm=UNITS_PER_EM, copyright=COPYRIGHT, uniqueID=None, trademark=TRADEMARK, 
+        # lowestRecPPEM=LOWEST_PPEM,
+        # familyName=None, styleName=None,
+        # fullName=None, version=None, versionMajor=VERSION_MAJOR, versionMinor=VERSION_MINOR,
+        # postscriptName=None, preferredFamily=None, preferredSubFamily=None,
+        # openTypeOS2WinAscent=None, openTypeOS2WinDescent=None,
+        # openTypeOS2Type=[2, 8], # fsType, TN standard
+        # vendorURL=None, manufacturerURL=None, manufacturer=None,
+        # designerURL=None, designer=None, 
+        # eulaURL=None, eulaDescription=None,
+        # underlinePosition=None, underlineThickness=None
+    ),
 
     'Upgrade_Try-Regular': MD(
         name='Upgrade_Try-Regular',
         ufoPath='ufo/Upgrade_Try-Regular.ufo',
-        #	Angles
+        # GlyphSet instance, describing the glyph set and GlyphData characteristics. 
+        # This attribute must be defined, or else the Latin_S_set (Small) will be used.
+        glyphSetName='LatinS',
+        # 
+        #    Angles & italics
+        # 
         italicAngle=0,
-        #	Vertical metrics
+        italicSkew=0.0,
+        italicRotation=0.0,
+        # 
+        #    Vertical metrics
+        # 
         ascender=750,
         capHeight=750,
         xHeight=500,
+        scHeight=500,
+        supsHeight=333,
         descender=-250,
+        baseline=0,
         baseOvershoot=12,
+        stemOvershoot=0,
         capOvershoot=12,
         scOvershoot=12,
         supsOvershoot=9,
-        #	Info
+        # 
+        #    Anchors
+        # 
+        ascenderAnchorOffsetY=-120,
+        boxTopAnchorOffsetY=-120,
+        capHeightAnchorOffsetY=-78, # Optional vertical offset of cap-anhors or lower capital diacritics.
+        xHeightAnchorOffsetY=-16,
+        baselineAnchorOffsetY=16,
+        ogonekAnchorOffsetY=16,
+        boxBottomAnchorOffsetY=64,
+        descenderAnchorOffsetY=64,
+        # 
+        #    Info
+        # 
         copyright='',
-	),
+        # 
+        #    MasterData parameters to be added for automatic generation
+        # 
+        # srcUFOPath=None
+        # someUFOPath=None
+        # orgUFOPath=None
+        # groupSrcUFOPath=None
+        # 
+        # Optional copy groups from here, otherwise use orgUFOPath
+        # 
+        # kerningSrcUFOPath=None, # Optional copy kerning from here, otherwise use orgUFOPath
+        # romanItalicUFOPath=None, # Path of corresponding master for roman <--> italic
+        # spacingSrcUFOPath=None, # If defined, used as spacing reference, overwriting all spacing rules. Goes with spacingOffset
+        # spacingOffset=0, # Value to add to margins of self.spacingSrcUFOPath (if defined)
+        # dsPosition=None,
+        # m0=None, # Origin of the design space
+        # m1=None, m2=None, # Used for interpolating spacing, outlines, anchor positions, component positions
+        # sm1=None, sm2=None, # Scalerpolate masters for condensed and extended making
+        # osm1=None, osm2=None, # Previous and next master on the same optical size level
+        # tripletData1=None, tripletData2=None, featurePath=None, 
+        # 
+        #    Vertical metrics
+        # 
+        # numrBaseline=None, supsBaseline=None, sinfBaseline=None, dnomBaseline=None, modBaseline=None,
+        # middlexHeight=None, middleCapHeight=None,
+        # Vertical anchor offsets to avoid collission with baseline, guidlines, etc. in mouse selection
+        # baseDiacriticsTop=None, capDiacriticsTop=None, scDiacriticsTop=None, # Baseline of top diacritics
+        # baseDiacriticsBottom=None, # Top of bottom diacritis
+        #    Horizontal metrics
+        # 
+        # diagonalTolerance=0, # ± Tolerance for italic diagonals to be marked as off-limit
+        # HStem=None, HThin=None, OStem=None, OThin=None,
+        # HscStem=None, HscThin=None, OscStem=None, OscThin=None,
+        # nStem=None, oStem=None, oThin=None, UThin=None, VThin=None, eThin=None,
+        # thickness=10, distance=16, # Used for Neon tubes, can be overwritten from GlyphData.thickness
+        # tabWidth=None,
+        # 
+        #    Table stuff
+        # 
+        # ttfPath=None, platformID=None, platEncID=None, langID=None, 
+        # unitsPerEm=UNITS_PER_EM, copyright=COPYRIGHT, uniqueID=None, trademark=TRADEMARK, 
+        # lowestRecPPEM=LOWEST_PPEM,
+        # familyName=None, styleName=None,
+        # fullName=None, version=None, versionMajor=VERSION_MAJOR, versionMinor=VERSION_MINOR,
+        # postscriptName=None, preferredFamily=None, preferredSubFamily=None,
+        # openTypeOS2WinAscent=None, openTypeOS2WinDescent=None,
+        # openTypeOS2Type=[2, 8], # fsType, TN standard
+        # vendorURL=None, manufacturerURL=None, manufacturer=None,
+        # designerURL=None, designer=None, 
+        # eulaURL=None, eulaDescription=None,
+        # underlinePosition=None, underlineThickness=None
+    ),
 
 }
 

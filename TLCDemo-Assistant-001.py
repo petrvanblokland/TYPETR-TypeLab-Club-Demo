@@ -43,6 +43,7 @@ import assistantLib.baseAssistant
 import assistantLib.assistantModules.data # This contains the MasterData class that keeps information for each master.
 import assistantLib.assistantModules.builder
 import assistantLib.assistantModules.overlay
+import assistantLib.assistantModules.curves
 import assistantLib.assistantModules.glyphsets.Latin_S_set
 
 # Reload the imports, in case they were already imported and their sources changed while RoboFont is open.
@@ -57,6 +58,10 @@ importlib.reload(assistantLib.assistantModules.glyphsets.groupBaseGlyphs)
 importlib.reload(assistantLib.assistantModules.glyphsets.glyphSet)
 importlib.reload(assistantLib.assistantModules.glyphsets.Latin_S_set)
 importlib.reload(assistantLib.assistantModules.glyphsets.glyphData)
+
+# Add to overlay part: [B] and [Q] for curve conversion, and smoothing conversion to circle
+importlib.reload(assistantLib.assistantModules.curves)
+from assistantLib.assistantModules.curves import AssistantModuleCurves
 
 # Import the two base classes
 # Assistant is inheriting from the RoboFont Subscriber class. It will take care of events happening in RoboFont, such as selecting a new glyph.
@@ -83,19 +88,25 @@ from assistantLib.assistantModules.glyphsets.Latin_S_set import LATIN_S_SET_NAME
 from assistantLib.toolbox import path2Dir
 
 THIS_PROJECT_PATH =  path2Dir(__file__) # Get the path to this project directory
+DEFAULT_EDIT_LAYER = 'public.default'
 
 # TypeLabClub Demo Assistant, inherits from the module classes that need to implemented
 class TLCDemoAssistant( # Eacht masters has its own, responding to a varaiety of RoboFont/EditWindow/Events
         Assistant, # Inheriting from Subscriber
         AssistantModuleOverlay, # Inheriting from WindowController. Adds library module functions as inherited class.
+        AssistantModuleCurves,
 	):
+    EDIT_LAYER = DEFAULT_EDIT_LAYER
+
     # These get called on opening the Installer window, defining the elements that draw in the EditorWindow
     INIT_MERZ_METHODS = [ 
         'initMerzOverlay',
+        'initMerzCurves',    
     ]
     # Allow the subscribed assistant parts to update the Merz elements.
     UPDATE_MERZ_METHODS = [ 
         'updateMerzOverlay',
+        'updateCurves',
     ] 
     SET_GLYPH_METHODS = [
         
@@ -103,7 +114,10 @@ class TLCDemoAssistant( # Eacht masters has its own, responding to a varaiety of
 class TLCDemoAssistantController( # Single Assistant window that creates/communicates with the Assistant subscribers.
         AssistantController, 
         AssistantModuleOverlay, # Add library function part source as inherited class.
+        AssistantModuleCurves,
 	):
+    EDIT_LAYER = DEFAULT_EDIT_LAYER
+
     W = 450 # Width and height of the Assistant window
     H = 250
 
@@ -122,8 +136,10 @@ class TLCDemoAssistantController( # Single Assistant window that creates/communi
 	# Always define the UFO file names as variables. This way accidental tupos are deteted by the Python compiler
 	# and UFO file names can be change during the deisgn process, e.g. pointing to other versions
 	# This way there is no need to find/replace names in the entire source.
-    UPGRADE_TRY_LIGHT      = 'Upgrade_Try-Light.ufo'    UPGRADE_TRY_REGULAR    = 'Upgrade_Try-Regular.ufo'
-    UPGRADE_TRY_BOLD       = 'Upgrade_Try-Bold.ufo'
+    UPGRADE_TRY_LIGHT      = 'Upgrade_Try-Light.ufo'
+    UPGRADE_TRY_REGULAR    = 'Upgrade_Try-Regular.ufo'
+    UPGRADE_TRY_BOLD       = 'Upgrade_Try-Bold.ufo'
+
     # Used by familyOverview, defining the order of masters in the top family line that shows in the EditorWindow
     UFO_NAMES = [ # Define the order of display in FamilyOverview
         UPGRADE_TRY_LIGHT,
@@ -133,7 +149,8 @@ class TLCDemoAssistantController( # Single Assistant window that creates/communi
     # Define the glyphSet for this selection of masters.
     # See https://github.com/koeberlin/Latin-Character-Sets
     # There is also LatinM_GlyphSet and LatinL_GlyphSet
-    # Custom glyphsets can be added localled and then imported/created as GLYPH_SET    GLYPH_SET = GlyphSet(LATIN_S_SET_NAME) # Make a Small Latin1 glyphset object.  
+    # Custom glyphsets can be added localled and then imported/created as GLYPH_SET
+    GLYPH_SET = GlyphSet(LATIN_S_SET_NAME) # Make a Small Latin1 glyphset object.  
 
     # Generate the MasterDataManager instance. This will test if the local masterData.py exists.
     # Otherwise it will be generated as default source.
@@ -162,6 +179,7 @@ class TLCDemoAssistantController( # Single Assistant window that creates/communi
 
     BUILD_UI_METHODS = [
         'buildOverlay',
+        'buildCurves',
     ]
     assistantGlyphEditorSubscriberClass = TLCDemoAssistant
 
